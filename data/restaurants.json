@@ -1,0 +1,39 @@
+[
+  { "name": "Thien Long",
+    "zipcode": 95121,
+    "city": "San Jose",
+    "menu": "fried flour cake (bot chien), grilled fish (cha ca la vong), grilled pork chop with rice, spicy beef noodle, egg rolls"
+  },
+  { "name": "Bun Bo Hue An Nam",
+    "zipcode": 95122,
+    "city": "San Jose",
+    "menu": "spicy beef noodle, beef noodle, chicken noodle"
+  },
+  { "name": "Hue restaurant",
+    "zipcode": 95124,
+    "city": "San Jose",
+    "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls"
+  },
+  { "name": "Dat Thanh",
+    "zipcode": 95122,
+    "city": "San Jose",
+    "menu": "grilled pork chop with rice, egg rolls, nem nuong"
+  },
+  { "name": "Pho Ha Noi",
+    "zipcode": 95122,
+    "city": "San Jose",
+    "menu": "grilled pork chop with rice, egg rolls, nem nuong, beef noodle, spicy beed noodle"
+  },
+  { "name": "Dong Que",
+  "zipcode": 95122,
+  "city": "San Jose",
+  "menu": "grilled pork chop with rice, egg rolls, sweet and sour fish hot pot, grilled snails"
+},
+{ "name": "KV Noodle",
+  "zipcode": 95116,
+  "city": "San Jose",
+  "menu": "grilled pork chop with rice, egg rolls, egg noodle"
+}
+
+
+]
