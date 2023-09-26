@@ -31,7 +31,7 @@ class Restaurant(db.Model):
     city = db.Column(db.String)
 
     #restaurants = db.relationship("Zipcode", back_populates="restaurants")
-    restaurantitems = db.relationship("RestaurantItem", back_populates="restaurantitems")
+    restaurantitems = db.relationship("RestaurantItem", back_populates="restaurant")
 
     def __repr__(self):
         return f"<Restaurant restaurant_id={self.id} restaurant_name={self.name}>"
@@ -49,7 +49,7 @@ class Vote(db.Model):
     user = db.relationship("User", back_populates="votes")
 
     def __repr__(self):
-        return f"<Vote vote_id={self.id} restaurant_id={self.restaurant_id}>"
+        return f"<Vote vote_id={self.id} restaurant_item_id={self.restaurant_item_id}>"
 
 class RestaurantItem(db.Model):
     """A vote for a restaurant"""
@@ -58,22 +58,26 @@ class RestaurantItem(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.id"))
-    item = db.Column(db.String, db.ForeignKey("menuitems.name"))
+    item = db.Column(db.String, db.ForeignKey("dishes.dish_name"))
 
-    votes = db.relationship("Vote", back_populates="votes")
-    restaurant = db.relationship("Restaurant", back_populates="restaurants")
-
+    votes = db.relationship("Vote", back_populates="restaurant_item")
+    restaurant = db.relationship("Restaurant", back_populates="restaurantitems")
+    dish = db.relationship("Dish", back_populates="restaurantitems")
 
     def __repr__(self):
-        return f"<RestaurantIem id={self.id} restaurant_id={self.restaurant_id}>"
+        return f"{self.id} - {self.item.capitalize()}"
 
-class MenuItem(db.Model):
+class Dish(db.Model):
     
-    __tablename__ = "menuitems"
+    __tablename__ = "dishes"
 
     #id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    name = db.Column(db.String, primary_key=True)
+    dish_name = db.Column(db.String, primary_key=True)
     #cuisine - nice to have but not added for now
+
+    restaurantitems = db.relationship("RestaurantItem", back_populates="dish")
+
+
 
 #class Zipcode(db.Model):
 #    __tablename__ = "zipcodes"
@@ -81,7 +85,7 @@ class MenuItem(db.Model):
 #    city = db.Column(db.String)
 #    county = db.Column(db.String)
 
-    restaurant = db.relationship("Restaurant", back_populates="restaurants")
+ 
 
 
 

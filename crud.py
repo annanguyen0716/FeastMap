@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from model import db, User, Restaurant, Vote, RestaurantItem, MenuItem, connect_to_db
+from model import db, User, Restaurant, Vote, RestaurantItem, Dish, connect_to_db
 
 
 def create_user(email, password):
@@ -22,6 +22,10 @@ def get_user_by_id(user_id):
 
     return User.query.get(user_id)
 
+def get_item_by_id(item_id):
+    """Return a user by primary key."""
+
+    return RestaurantItem.query.get(item_id)
 
 def get_user_by_email(email):
     """Return a user by email."""
@@ -29,13 +33,12 @@ def get_user_by_email(email):
     return User.query.filter(User.email == email).first()
 
 
-def create_restaurant(name,zipcode,menu):
-    """Create and return a new movie."""
+def create_restaurant(name,zipcode):
+    """Create and return a new restaurant"""
 
     restaurant = Restaurant(
         name=name,
-        zipcode=zipcode,
-
+        zipcode=zipcode
     )
 
     return restaurant
@@ -46,18 +49,44 @@ def create_restaurant_item(restaurant,item):
 
     return restaurant_item
 
-def create_menu_item(item):
+def create_menu_item(dish_name):
 
-    menu_item = MenuItem(item=item)
-
+    menu_item = Dish(dish_name=dish_name)
+    
     return menu_item
 
+def get_items_by_restaurant(restaurant_id):
+    """Return a list of items on the menu"""
+    items = RestaurantItem.query.filter(RestaurantItem.restaurant_id == restaurant_id)
+
+    return items
+
+def get_restaurantitems_by_item(item):
+    """Return a list of items on the menu"""
+    restaurantitems = RestaurantItem.query.filter(RestaurantItem.item == item)
+
+    return restaurantitems
+
+def get_vote_by_id(vote_id):
+    """Return a list of items on the menu"""
+    vote = Vote.query.get(vote_id)
+
+    return vote
 
 def get_restaurants():
     """Return all movies."""
 
     return Restaurant.query.all()
 
+def get_dishes():
+    """Return all movies."""
+
+    return Dish.query.order_by(Dish.dish_name)
+
+def get_restaurant_name_by_id(restaurant_id):
+    """Return a restaurant by restaurant id"""
+
+    return Restaurant.query.get(restaurant_id).name
 
 def get_restaurant_by_id(restaurant_id):
     """Return a restaurant by restaurant id"""
@@ -65,10 +94,10 @@ def get_restaurant_by_id(restaurant_id):
     return Restaurant.query.get(restaurant_id)
 
 
-def create_vote(user, restaurantitem):
+def create_vote(user_id, restaurantitem_id):
     """Create and return a new rating."""
 
-    vote = Vote(user_id=user, restaurant_item_id=restaurantitem)
+    vote = Vote(user_id=user_id, restaurant_item_id=restaurantitem_id)
 
     return vote
 

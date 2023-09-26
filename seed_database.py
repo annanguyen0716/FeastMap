@@ -2,7 +2,7 @@
 
 import os
 import json
-from random import choice, randint
+from random import sample, randint
 from datetime import datetime
 
 import crud
@@ -22,8 +22,10 @@ with open("data/restaurants.json") as f:
 # Create movies, store them in list so we can use them
 # to create fake ratings
 restaurants_in_db = []
-restaurantitems_in_db = set()
-menuitems_in_db = set()
+restaurantitems_in_db = []
+dishes_in_db_check = set()
+dishes_in_db = []
+
 
 for restaurant in restaurant_data:
     name, zipcode, city = (
@@ -32,38 +34,47 @@ for restaurant in restaurant_data:
         restaurant["city"],
     )
 
-    db_restaurant = crud.create_restaurant(name, zipcode, city)
-    restaurants_in_db.append(db_restaurant)
+    db_restaurant = crud.create_restaurant(name, zipcode)
+    model.db.session.add(db_restaurant)
+    model.db.session.commit()
 
     menu_list = restaurant["menu"].split(", ")
 
     for item in menu_list:
-        menu_item = crud.create_menu_item(item)
-        menuitems_in_db.add(menu_item)
+        if item not in dishes_in_db_check:
+            dishes_in_db_check.add(item)
+            dish = crud.create_menu_item(item)
+            dishes_in_db.append(dish)
         restaurant_item = crud.create_restaurant_item(db_restaurant.id, item)
-        restaurantitems_in_db.add(restaurant_item)
+        restaurantitems_in_db.append(restaurant_item)
+    
 
 
-model.db.session.add_all(restaurants_in_db)
-model.db.session.commit()
 
+model.db.session.add_all(dishes_in_db)
 model.db.session.add_all(restaurantitems_in_db)
 model.db.session.commit()
 
-model.db.session.add_all(menuitems_in_db)
-model.db.session.commit()
+#model.db.session.add_all(menuitems_in_db)
+#model.db.session.commit()
 # 
-# Create 10 users; each user will make 10 ratings
-for n in range(10):
-    email = f"user{n}@test.com"  # Voila! A unique email!
+# Create 15 users; each user will make 10 ratings
+for n in range(15):
+    email = f"user{n+1}@test.com"  # Voila! A unique email!
     password = "test"
 
     user = crud.create_user(email, password)
     model.db.session.add(user)
 
-    for _ in range(30):
-        random_restaurant_item = choice(restaurantitems_in_db)
-        vote = crud.create_vote(user.id,random_restaurant_item.id)
+    model.db.session.commit()
+
+
+    random_restaurant_item = sample(restaurantitems_in_db, 10)
+
+    for item in random_restaurant_item:
+        vote = crud.create_vote(user.id, item.id)
         model.db.session.add(vote)
+        model.db.session.commit()
+
 
 model.db.session.commit()

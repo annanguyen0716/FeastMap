@@ -17,23 +17,42 @@ def homepage():
 
     return render_template("homepage.html")
 
+@app.route("/dishes")
+def all_dishes():
+    """View all restaurant"""
 
-@app.route("/movies")
+    dishes = crud.get_dishes()
+
+    return render_template("all_dishes.html", dishes=dishes)
+
+@app.route("/dishes/<dish_name>")
+def show_restaurants(dish_name):
+    """Show restaurants that serve a dish."""
+
+    restaurantitems = crud.get_restaurantitems_by_item(dish_name)
+    restaurants = []
+    for restaurantitem in restaurantitems:
+        restaurants.append(crud.get_restaurant_by_id(restaurantitem.restaurant_id))
+
+    return render_template("restaurants_that_serve_dish.html", restaurants=restaurants, dish_name=dish_name.capitalize())
+
+@app.route("/restaurants")
 def all_restaurants():
-    """View all movies."""
+    """View all restaurant"""
 
     restaurants = crud.get_restaurants()
 
     return render_template("all_restaurants.html", restaurants=restaurants)
 
 
-@app.route("/movies/<movie_id>")
-def show_movie(movie_id):
+@app.route("/restaurants/<restaurant_id>")
+def show_restaurant(restaurant_id):
     """Show details on a particular movie."""
 
-    movie = crud.get_movie_by_id(movie_id)
+    restaurant = crud.get_restaurant_by_id(restaurant_id)
+    items_to_vote = crud.get_items_by_restaurant(restaurant_id)
 
-    return render_template("movie_details.html", movie=movie)
+    return render_template("restaurant_details.html", restaurant=restaurant, items_to_vote=items_to_vote)
 
 
 @app.route("/users")
@@ -69,8 +88,12 @@ def show_user(user_id):
     """Show details on a particular user."""
 
     user = crud.get_user_by_id(user_id)
+    votes_details = []
+    for vote in user.votes:
+        restaurant_item = crud.get_item_by_id(vote.restaurant_item_id)
+        votes_details.append((crud.get_restaurant_name_by_id(restaurant_item.restaurant_id),restaurant_item.item))
 
-    return render_template("user_details.html", user=user)
+    return render_template("user_details.html", user=user, votes_details=votes_details)
 
 
 @app.route("/login", methods=["POST"])
@@ -90,37 +113,41 @@ def process_login():
 
     return redirect("/")
 
-@app.route("/update_rating", methods=["POST"])
-def update_rating():
-    rating_id = request.json["rating_id"]
-    updated_score = request.json["updated_score"]
-    crud.update_rating(rating_id, updated_score)
-    db.session.commit()
+#@app.route("/update_rating", methods=["POST"])
+#def update_rating():
+#    rating_id = request.json["rating_id"]
+#    updated_score = request.json["updated_score"]
+#    crud.update_rating(rating_id, updated_score)
+#    db.session.commit()
 
-    return "Success"
+#    return "Success"
 
-@app.route("/movies/<movie_id>/ratings", methods=["POST"])
-def create_rating(movie_id):
-    """Create a new rating for the movie."""
+@app.route("/restaurants/<restaurant_id>/votes", methods=["POST"])
+def create_vote(restaurant_id):
+    """Create a new vote for the restaurant"""
 
     logged_in_email = session.get("user_email")
-    rating_score = request.form.get("rating")
+    items_to_vote = crud.get_items_by_restaurant(restaurant_id)
+    voted_item = request.form.get("vote")
 
     if logged_in_email is None:
-        flash("You must log in to rate a movie.")
-    elif not rating_score:
-        flash("Error: you didn't select a score for your rating.")
+        flash("You must log in to vote for a restaurant.")
+    elif not voted_item:
+        flash("Error: you didn't select a menu item for your vote")
     else:
         user = crud.get_user_by_email(logged_in_email)
-        movie = crud.get_movie_by_id(movie_id)
+ 
+        #restaurantitem = crud.get_restaurant_by_id(restaurant_id)
 
-        rating = crud.create_rating(user, movie, int(rating_score))
-        db.session.add(rating)
+
+        vote = crud.create_vote(user.id, int(voted_item.split(" - ")[0]))
+        print("HEREEE",vote)
+        db.session.add(vote)
         db.session.commit()
 
-        flash(f"You rated this movie {rating_score} out of 5.")
+        flash(f"You voted for {voted_item} at {crud.get_restaurant_by_id(restaurant_id).name}.")
 
-    return redirect(f"/movies/{movie_id}")
+    return redirect(f"/restaurants/{restaurant_id}")
 
 
 if __name__ == "__main__":

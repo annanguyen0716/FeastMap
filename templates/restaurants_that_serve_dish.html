@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}All Restaurants{% endblock %}
+{% block title %}{{dish_name}}{% endblock %}
 
 {% block body %}
-  <h1>All Restaurants</h1>
+  <h1>Find your favorite {{dish_name}} at these restaurants</h1>
 
   <ul>
     {% for restaurant in restaurants %}

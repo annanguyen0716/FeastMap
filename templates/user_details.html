@@ -5,11 +5,11 @@
 {% block body %}
 <h1>{{ user.email }}</h1>
 <ul>
-{% for rating in user.ratings %}
+{% for vote in votes_details %}
     <li>
-        {{ rating.movie.title }}:
-        <span class=rating_num_{{ rating.rating_id }} >
-            {{ rating.score }}
+        {{ vote[0]}}:
+        <span>
+            {{ vote[1] }}
         </span>
     </li>
 {% endfor %}
