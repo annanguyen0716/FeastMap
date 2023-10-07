@@ -2,15 +2,20 @@
 {% block title %}All Dishes{% endblock %}
 
 {% block body %}
-  <h1>All Dishes</h1>
+  
+  <div class="container">
+    <h1>All Dishes</h1>
+    <ul>
+      {% for dish in dishes %}
+        <li>
+          <a href="/dishes/{{ dish.dish_name }}">
+            {{ dish.dish_name.capitalize() }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 
-  <ul>
-    {% for dish in dishes %}
-      <li>
-        <a href="/dishes/{{ dish.dish_name }}">
-          {{ dish.dish_name.capitalize() }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+
+
 {% endblock %}

@@ -7,12 +7,12 @@
   { "name": "Bun Bo Hue An Nam",
     "zipcode": 95122,
     "city": "San Jose",
-    "menu": "spicy beef noodle, beef noodle, chicken noodle"
+    "menu": "spicy beef noodle, vietnamese beef noodle, vietnamese chicken noodle"
   },
   { "name": "Hue restaurant",
     "zipcode": 95124,
     "city": "San Jose",
-    "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls"
+    "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls, vietnamese beef noodle"
   },
   { "name": "Dat Thanh",
     "zipcode": 95122,
@@ -22,7 +22,7 @@
   { "name": "Pho Ha Noi",
     "zipcode": 95122,
     "city": "San Jose",
-    "menu": "grilled pork chop with rice, egg rolls, nem nuong, beef noodle, spicy beed noodle"
+    "menu": "grilled pork chop with rice, egg rolls, nem nuong, vietnamese beef noodle, spicy beef noodle"
   },
   { "name": "Dong Que",
   "zipcode": 95122,
@@ -32,7 +32,7 @@
 { "name": "KV Noodle",
   "zipcode": 95116,
   "city": "San Jose",
-  "menu": "grilled pork chop with rice, egg rolls, egg noodle"
+  "menu": "grilled pork chop with rice, egg rolls, egg noodle, vietnamese beef noodle"
 },
 { "name": "Com Tam Thien Huong",
   "zipcode": 95121,

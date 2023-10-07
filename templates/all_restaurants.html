@@ -2,15 +2,18 @@
 {% block title %}All Restaurants{% endblock %}
 
 {% block body %}
-  <h1>All Restaurants</h1>
 
-  <ul>
-    {% for restaurant in restaurants %}
-      <li>
-        <a href="/restaurants/{{ restaurant.id }}">
-          {{ restaurant.name }}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="container">
+    <h1>All Restaurants</h1>
+    <ul>
+      {% for restaurant in restaurants %}
+        <li>
+          <a href="/restaurants/{{ restaurant.id }}">
+            {{ restaurant.name }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
 {% endblock %}

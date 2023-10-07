@@ -78,15 +78,11 @@ class Dish(db.Model):
     restaurantitems = db.relationship("RestaurantItem", back_populates="dish")
 
 
-
 #class Zipcode(db.Model):
 #    __tablename__ = "zipcodes"
 #    zipcode = db.Column(db.Integer, primary_key=True)
 #    city = db.Column(db.String)
 #    county = db.Column(db.String)
-
- 
-
 
 
 def connect_to_db(flask_app, db_uri="postgresql:///ratings", echo=True):

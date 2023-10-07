@@ -3,15 +3,18 @@
 {% block title %}{{ user.email }}'s Page{% endblock %}
 
 {% block body %}
-<h1>{{ user.email }}</h1>
-<ul>
-{% for vote in votes_details %}
-    <li>
-        {{ vote[0]}}:
-        <span>
-            {{ vote[1] }}
-        </span>
-    </li>
-{% endfor %}
-</ul>
+<div class="container">
+    <h1>{{ user.email }}</h1>
+    <ul>
+    {% for vote in votes_details %}
+        <li>
+            {{ vote[0]}}:
+            <span>
+                {{ vote[1] }}
+            </span>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+
 {% endblock %}

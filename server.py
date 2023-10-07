@@ -1,6 +1,6 @@
 """Server for movie ratings app."""
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, jsonify
 from model import connect_to_db, db
 import crud
 
@@ -14,8 +14,9 @@ app.jinja_env.undefined = StrictUndefined
 @app.route("/")
 def homepage():
     """View homepage."""
+    dishes = crud.get_dishes()
 
-    return render_template("homepage.html")
+    return render_template("homepage.html", dishes=dishes)
 
 @app.route("/dishes")
 def all_dishes():
@@ -32,7 +33,11 @@ def show_restaurants(dish_name):
     restaurantitems = crud.get_restaurantitems_by_item(dish_name)
     restaurants = []
     for restaurantitem in restaurantitems:
-        restaurants.append(crud.get_restaurant_by_id(restaurantitem.restaurant_id))
+        number_of_votes = len(restaurantitem.votes)
+        restaurant = crud.get_restaurant_by_id(restaurantitem.restaurant_id)
+        restaurants.append((number_of_votes,restaurant))
+    restaurants.sort(key=lambda a: a[0], reverse = True)
+        #restaurants.append(crud.get_restaurant_by_id(restaurantitem.restaurant_id))
 
     return render_template("restaurants_that_serve_dish.html", restaurants=restaurants, dish_name=dish_name.capitalize())
 
@@ -141,7 +146,7 @@ def create_vote(restaurant_id):
 
 
         vote = crud.create_vote(user.id, int(voted_item.split(" - ")[0]))
-        print("HEREEE",vote)
+  
         db.session.add(vote)
         db.session.commit()
 
@@ -149,6 +154,25 @@ def create_vote(restaurant_id):
 
     return redirect(f"/restaurants/{restaurant_id}")
 
+@app.route("/<dish_name>")
+def recommended_restaurant(dish_name):
+    
+    restaurantitems = crud.get_restaurantitems_by_item(dish_name)
+    highest = 0
+    best_restaurant = 0
+    for restaurantitem in restaurantitems:
+        number_of_votes = len(restaurantitem.votes)
+        if number_of_votes > highest:
+            highest = number_of_votes
+            best_restaurant = restaurantitem.restaurant_id
+    
+    res = crud.get_restaurant_by_id(best_restaurant)
+
+    if highest == 0:
+        return jsonify({'restaurant': "Oops. No restaurant has been voted for this dish"})
+
+    
+    return jsonify({'restaurant': res.name})
 
 if __name__ == "__main__":
     connect_to_db(app)
