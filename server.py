@@ -48,6 +48,23 @@ def all_restaurants():
 
     return render_template("all_restaurants.html", restaurants=restaurants)
 
+@app.route("/restaurant_positions")
+def restaurant_positions():
+    """View all restaurant"""
+    restaurants = crud.get_restaurants()
+    positions = []
+    for restaurant in restaurants:
+        positions.append({
+            "name": restaurant.name,
+            "position": {
+                "lat": restaurant.latitude,
+                "lng": restaurant.longtitude
+            }
+        })
+
+    return jsonify({
+        "restaurants": positions
+    })
 
 @app.route("/restaurants/<restaurant_id>")
 def show_restaurant(restaurant_id):
@@ -59,7 +76,7 @@ def show_restaurant(restaurant_id):
 
     if logged_in_email is None:
         flash("You must log in to vote for a restaurant.")
-        
+
     return render_template("restaurant_details.html", restaurant=restaurant, items_to_vote=items_to_vote)
 
 

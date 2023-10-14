@@ -7,3 +7,10 @@ document.querySelector("#drop-down").onchange = async function (e) {
     document.querySelector('#best_restaurant').innerHTML = `<h5 class="text-success"><a href="/restaurants/${restaurant.restaurant_id}">${restaurant.restaurant}</a></h5>`;
 };
 
+
+const myModal = document.getElementById('myModal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})

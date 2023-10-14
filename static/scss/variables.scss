@@ -50,4 +50,11 @@ $theme-colors-text: (
   "dark": $dark-text-emphasis,
 );
 
+.google-map {
+  display: block;
+  margin: 0px auto;
+  height: 50vh;
+  width: 88vh;
+}
+
 @import "../node_modules/bootstrap/scss/bootstrap";

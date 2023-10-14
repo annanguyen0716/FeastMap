@@ -31,10 +31,11 @@ for restaurant in restaurant_data:
     name, zipcode, city = (
         restaurant["name"],
         restaurant["zipcode"],
-        restaurant["city"],
+        restaurant["city"]
     )
+    longtitude, latitude = restaurant["location"].split(", ")
 
-    db_restaurant = crud.create_restaurant(name, zipcode)
+    db_restaurant = crud.create_restaurant(name, zipcode, longtitude, latitude)
     model.db.session.add(db_restaurant)
     model.db.session.commit()
 

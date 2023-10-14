@@ -2,52 +2,68 @@
   { "name": "Thien Long",
     "zipcode": 95121,
     "city": "San Jose",
-    "menu": "fried flour cake (bot chien), grilled fish (cha ca la vong), grilled pork chop with rice, spicy beef noodle, egg rolls"
+    "menu": "fried flour cake (bot chien), grilled fish (cha ca la vong), grilled pork chop with rice, spicy beef noodle, egg rolls",
+    "location": "37.3085591765179, -121.81384291577805"
   },
   { "name": "Bun Bo Hue An Nam",
     "zipcode": 95122,
     "city": "San Jose",
-    "menu": "spicy beef noodle, vietnamese beef noodle, vietnamese chicken noodle"
+    "menu": "spicy beef noodle, vietnamese beef noodle, vietnamese chicken noodle",
+    "location": "37.329048165214644, -121.8583640041315"
   },
   { "name": "Hue restaurant",
     "zipcode": 95124,
     "city": "San Jose",
-    "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls, vietnamese beef noodle"
+    "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls, vietnamese beef noodle",
+    "location": "37.30977017363129, -121.81366641762571"
   },
   { "name": "Dat Thanh",
     "zipcode": 95122,
     "city": "San Jose",
-    "menu": "grilled pork chop with rice, egg rolls, nem nuong"
+    "menu": "grilled pork chop with rice, egg rolls, nem nuong",
+    "location": "37.31459526073823, -121.83814435625935"
   },
   { "name": "Pho Ha Noi",
     "zipcode": 95122,
     "city": "San Jose",
-    "menu": "grilled pork chop with rice, egg rolls, nem nuong, vietnamese beef noodle, spicy beef noodle"
+    "menu": "grilled pork chop with rice, egg rolls, nem nuong, vietnamese beef noodle, spicy beef noodle",
+    "location": "37.332716172986444, -121.85845094830843"
   },
   { "name": "Dong Que",
   "zipcode": 95122,
   "city": "San Jose",
-  "menu": "grilled pork chop with rice, egg rolls, sweet and sour fish hot pot, grilled snails"
+  "menu": "grilled pork chop with rice, egg rolls, sweet and sour fish hot pot, grilled snails",
+  "location": "37.363452054874394, -121.83240216180137"
 },
 { "name": "KV Noodle",
   "zipcode": 95116,
   "city": "San Jose",
-  "menu": "grilled pork chop with rice, egg rolls, egg noodle, vietnamese beef noodle"
+  "menu": "grilled pork chop with rice, egg rolls, egg noodle, vietnamese beef noodle",
+  "location": "37.341560289202576, -121.8616893292712"
 },
 { "name": "Com Tam Thien Huong",
   "zipcode": 95121,
   "city": "San Jose",
-  "menu": "grilled pork chop with rice, egg rolls, egg noodle, spicy beef noodle"
+  "menu": "grilled pork chop with rice, egg rolls, egg noodle, spicy beef noodle",
+  "location": "37.33055504460603, -121.85758368879002"
 },
 { "name": "Banh Cuon Ong Ta",
   "zipcode": 95122,
   "city": "San Jose",
-  "menu": "rice rolls, egg rolls"
+  "menu": "rice rolls, egg rolls",
+  "location": "37.33201292792895, -121.85697790228357"
 },
 { "name": "Banh Cuon Thien Huong",
   "zipcode": 95122,
   "city": "San Jose",
-  "menu": "rice rolls, egg rolls"
+  "menu": "rice rolls, egg rolls",
+  "location": "37.32223437087, -121.82225227744496"
+},
+{ "name": "Daeho Kalbi Jjim & Beef Soup",
+  "zipcode": 95035,
+  "city": "Milpitas",
+  "menu": "kalbijjim, kalbitang",
+  "location": "37.438331079269425, -121.91186766148068"
 }
 
 ]

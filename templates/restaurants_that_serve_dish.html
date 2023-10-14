@@ -4,14 +4,19 @@
 {% block body %}
   
   <div class="container">
-    <h1>Find your favorite {{dish_name}} at these restaurants</h1>
+
+    <div class="span">
+      <div class="p-3 mb-2 bg-primary text-white">
+        <h3>Find your favorite {{dish_name}} at these restaurants</h3>
+      </div>
+  </div>
     <div class="row">
 
       <div class="col-4">
         <div class="text">
-          <ul>
+          <ul class="list-group">
             {% for restaurant in restaurants %}
-              <li>
+              <li class="list-group-item">
                 <a href="/restaurants/{{ restaurant[1].id }}">
                   {{ restaurant[1].name }} has {{restaurant[0]}} votes for {{dish_name}}
                 </a>

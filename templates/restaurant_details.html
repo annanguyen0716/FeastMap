@@ -3,26 +3,99 @@
 {% block title %}{{ restaurant.id }} - Details{% endblock %}
 
 {% block body %}
-<h1>{{ restaurant.name }}</h1>
+<div class="container">
+  <div class="p-3 mb-2 bg-success text-white">
+    <div >
+      <h1>{{ restaurant.name }}</h1>
 
-<div>
-  {% if session.get('user_email') %}
+      <div>
+        {% if session.get('user_email') %}
+      
+        <h2>Recommend this restaurant</h2>
+        
+        <form action="/restaurants/{{ restaurant.id }}/votes" method="POST" id="myForm">
+          <p>
+            Vote for:
+            <select name="vote" id="vote-select">
+              <option value="">Select menu item</option>
+              {% for item in items_to_vote %}
+                <option value="{{ item }}">{{ item }}</option>
+              {% endfor %}
+            </select>
+          </p>
+          <p><input type="submit"></p>
+        </form>
+      
+      
+      
+        {% endif %}
+      
+    </div>
+    
+    </div>
+  </div>
 
-  <h2>Recommend this restaurant</h2>
   
-  <form action="/restaurants/{{ restaurant.id }}/votes" method="POST">
-    <p>
-      Vote for:
-      <select name="vote">
-        <option value="">Select menu item</option>
-        {% for item in items_to_vote %}
-          <option value="{{ item }}">{{ item }}</option>
-        {% endfor %}
-      </select>
-    </p>
-    <p><input type="submit"></p>
-  </form>
-  {% endif %}
+<!-- The modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel"">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Thank you for your recommendation!</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        You voted for
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      const selectElement = document.getElementById("vote-select");
+      const modalBody = document.getElementById("modalBody");
+  
+      form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent the form from submitting normally
+  
+        // Get the selected value from the <select> element
+        const selectedValue = selectElement.value;
+        var n = selectedValue.lastIndexOf('-');
+        var res = selectedValue.substring(n+1);
+        //console.log(selectElement);
+        modalBody.innerHTML = "You've voted for " + res + " at this restaurant";
+  
+        // Show the modal
+        console.log(document.getElementById("myModal"));
+        var modal = new bootstrap.Modal(document.getElementById("myModal"));
+        modal.show();
+      });
+    });
+
+    function closeModal() {
+      new bootstrap.Modal(document.getElementById("myModal")).hide();
+    }
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    closeModal()
+  }
+}
+  </script>
+
+
+
+  
 
   {% if not session.get('user_email') %}
 

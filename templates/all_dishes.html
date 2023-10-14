@@ -4,10 +4,15 @@
 {% block body %}
   
   <div class="container">
-    <h1>All Dishes</h1>
-    <ul>
+    <div class="span">
+      <div class="p-3 mb-2 bg-success text-white">
+        <h1>All Dishes</h1>
+      </div>
+    </div>
+    
+    <ul class="list-group">
       {% for dish in dishes %}
-        <li>
+        <li class="list-group-item">
           <a href="/dishes/{{ dish.dish_name }}">
             {{ dish.dish_name.capitalize() }}
           </a>

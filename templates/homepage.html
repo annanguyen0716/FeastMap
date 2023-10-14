@@ -66,7 +66,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="span">
 
       <h3>Quick Search</h3>
 
@@ -93,53 +93,55 @@
     
     </div>
 
-  <div class="row">
-    <div class="col-6">
+  <div class="position-absolute bottom-0 end-10">
+    <div class="row">
+      <div class="col-7">
         
-      
-      <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-      <h4>Create an Account</h>
-      </div>
-      <form action="/users" method="POST">
-        <p>
-          Username <input type="text" name="username">
-        </p>
-
-        <p>
-          Email <input type="text" name="email">
-        </p>
-    
-        <p>
-          Password <input type="password" name="password">
-        </p>
-    
-        <p>
-          <input type="submit">
-        </p>
-      </form>
-    </div>
-
-    <div class="col-6">
-      <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-        <h4>Log In</h>
-      </div>
-      <form action="/login" method="POST">
-        <p>
-          Email <input type="text" name="email">
-        </p>
-    
-        <p>
-          Password <input type="password" name="password">
-        </p>
-    
-        <p>
-          <input type="submit">
-        </p>
-      </form>
-    </div>
-  </div>
+        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+        <h4>Create an Account</h>
+        </div>
+        <form action="/users" method="POST">
+          <p>
+            Username <input type="text" name="username">
+          </p>
   
-  <script src="static/script.js"></script>
+          <p>
+            Email <input type="text" name="email">
+          </p>
+      
+          <p>
+            Password <input type="password" name="password">
+          </p>
+      
+          <p>
+            <input type="submit">
+          </p>
+        </form>
+      </div>
+      <div class="col-5">
+        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+          <h4>Log In</h>
+        </div>
+        <form action="/login" method="POST">
+          <p>
+            Email <input type="text" name="email">
+          </p>
+      
+          <p>
+            Password <input type="password" name="password">
+          </p>
+      
+          <p>
+            <input type="submit">
+          </p>
+        </form>
+      </div>
+    </div>
     
+
+    
+  </div>
+
+<script src="static/script.js"/>    
 
 {% endblock %}

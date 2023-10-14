@@ -30,6 +30,8 @@ class Restaurant(db.Model):
     name = db.Column(db.String)
     zipcode = db.Column(db.Integer)
     city = db.Column(db.String)
+    longtitude = db.Column(db.Float)
+    latitude = db.Column(db.Float)
 
     #restaurants = db.relationship("Zipcode", back_populates="restaurants")
     restaurantitems = db.relationship("RestaurantItem", back_populates="restaurant")

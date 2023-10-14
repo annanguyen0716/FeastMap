@@ -37,12 +37,14 @@ def get_user_by_username(username):
 
     return User.query.filter(User.username == username).first()
 
-def create_restaurant(name,zipcode):
+def create_restaurant(name,zipcode,latitude,longtitude):
     """Create and return a new restaurant"""
 
     restaurant = Restaurant(
         name=name,
-        zipcode=zipcode
+        zipcode=zipcode,
+        latitude=latitude,
+        longtitude=longtitude,
     )
 
     return restaurant
