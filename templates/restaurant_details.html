@@ -23,6 +23,13 @@
     <p><input type="submit"></p>
   </form>
   {% endif %}
+
+  {% if not session.get('user_email') %}
+
+  <h2>Log in to be able to vote for this restaurant</h2>
+  
+
+  {% endif %}
 </div>
 
 

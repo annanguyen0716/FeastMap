@@ -38,7 +38,6 @@ def show_restaurants(dish_name):
         restaurants.append((number_of_votes,restaurant))
     restaurants.sort(key=lambda a: a[0], reverse = True)
         #restaurants.append(crud.get_restaurant_by_id(restaurantitem.restaurant_id))
-
     return render_template("restaurants_that_serve_dish.html", restaurants=restaurants, dish_name=dish_name.capitalize())
 
 @app.route("/restaurants")
@@ -52,11 +51,15 @@ def all_restaurants():
 
 @app.route("/restaurants/<restaurant_id>")
 def show_restaurant(restaurant_id):
-    """Show details on a particular movie."""
+    """Show details on a particular restaurant"""
 
     restaurant = crud.get_restaurant_by_id(restaurant_id)
     items_to_vote = crud.get_items_by_restaurant(restaurant_id)
+    logged_in_email = session.get("user_email")
 
+    if logged_in_email is None:
+        flash("You must log in to vote for a restaurant.")
+        
     return render_template("restaurant_details.html", restaurant=restaurant, items_to_vote=items_to_vote)
 
 
@@ -75,12 +78,15 @@ def register_user():
 
     email = request.form.get("email")
     password = request.form.get("password")
+    username = request.form.get("username")
 
     user = crud.get_user_by_email(email)
+
     if user:
         flash("Cannot create an account with that email. Try again.")
+
     else:
-        user = crud.create_user(email, password)
+        user = crud.create_user(email, password, username)
         db.session.add(user)
         db.session.commit()
         flash("Account created! Please log in.")
@@ -97,6 +103,8 @@ def show_user(user_id):
     for vote in user.votes:
         restaurant_item = crud.get_item_by_id(vote.restaurant_item_id)
         votes_details.append((crud.get_restaurant_name_by_id(restaurant_item.restaurant_id),restaurant_item.item))
+    
+    votes_details.sort(key=lambda a: a[0])
 
     return render_template("user_details.html", user=user, votes_details=votes_details)
 
@@ -127,6 +135,7 @@ def process_login():
 
 #    return "Success"
 
+
 @app.route("/restaurants/<restaurant_id>/votes", methods=["POST"])
 def create_vote(restaurant_id):
     """Create a new vote for the restaurant"""
@@ -146,6 +155,7 @@ def create_vote(restaurant_id):
 
 
         vote = crud.create_vote(user.id, int(voted_item.split(" - ")[0]))
+   
   
         db.session.add(vote)
         db.session.commit()
@@ -169,10 +179,10 @@ def recommended_restaurant(dish_name):
     res = crud.get_restaurant_by_id(best_restaurant)
 
     if highest == 0:
-        return jsonify({'restaurant': "Oops. No restaurant has been voted for this dish"})
+        return jsonify({'restaurant': "Oops. No restaurant has been voted for this dish", 'restaurant_id': -1})
 
     
-    return jsonify({'restaurant': res.name})
+    return jsonify({'restaurant': res.name, 'restaurant_id': res.id})
 
 if __name__ == "__main__":
     connect_to_db(app)

@@ -39,3 +39,15 @@ $warning-bg-subtle:       tint-color($warning, 80%);
 $danger-bg-subtle:        tint-color($danger, 80%);
 $light-bg-subtle:         mix($gray-100, $white);
 $dark-bg-subtle:          $gray-400;
+$theme-colors-text: (
+  "primary": $primary-text-emphasis,
+  "secondary": $secondary-text-emphasis,
+  "success": $success-text-emphasis,
+  "info": $info-text-emphasis,
+  "warning": $warning-text-emphasis,
+  "danger": $danger-text-emphasis,
+  "light": $light-text-emphasis,
+  "dark": $dark-text-emphasis,
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap";

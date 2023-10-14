@@ -3,10 +3,10 @@
 from model import db, User, Restaurant, Vote, RestaurantItem, Dish, connect_to_db
 
 
-def create_user(email, password):
+def create_user(email, password, username):
     """Create and return a new user."""
 
-    user = User(email=email, password=password)
+    user = User(email=email, password=password, username=username)
 
     return user
 
@@ -32,6 +32,10 @@ def get_user_by_email(email):
 
     return User.query.filter(User.email == email).first()
 
+def get_user_by_username(username):
+    """Return a user by email."""
+
+    return User.query.filter(User.username == username).first()
 
 def create_restaurant(name,zipcode):
     """Create and return a new restaurant"""

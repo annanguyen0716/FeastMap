@@ -5,10 +5,13 @@
 
 
   <div class="container">
-    <div class="row">
+    <div class="span">
       <div class="p-3 mb-2 bg-success text-white">
+      
         <h1>FoodReferral</h1>
-        <h2>Crowd-sourced recommendations by food gurus at your fingertip!</h1>
+        <h2>Crowd-sourced recommendations by foodies at your fingertip!</h1>
+
+
       </div>
 
 
@@ -22,13 +25,43 @@
 
     </div>
 
-    <div class="row">
+    <!--<div class="row">
       <div class="col">
         <ul>
           <li><a href="/restaurants">Find restaurants and vote</a></li>
-          <li><a href="/dishes"> Search for a recommendation - All dishes</a></li>
-          <li><a href="/users">View all fellow food gurus</a></li>
+          <li><a href="/dishes">All dishes </a></li>
+          <li><a href="/users">View all fellow foodies</a></li>
         </ul>
+      </div>
+    </div>-->
+
+    <div class="row">
+      <div class="col-sm-4 mb-3 mb-sm-0">
+        <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Restaurants</h5>
+            <p class="card-text">Visit our list of all restaurants, see what's on the menu and vote</p>
+            <a href="/restaurants" class="btn btn-primary text-bg-primary">Find a restaurant</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Dishes</h5>
+            <p class="card-text">Visit our list of voted dishes and find your recommendation</p>
+            <a href="/dishes" class="btn btn-primary">Find a dish</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Users</h5>
+            <p class="card-text">Find other food gurus and see what they voted for</p>
+            <a href="/users" class="btn btn-primary">Find a foodie</a>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -36,71 +69,77 @@
     <div class="row">
 
       <h3>Quick Search</h3>
+
+      <div class="row">
+        <div class="col">
+          <h4>Choose from drop down to see recommended restaurant</h4>
+          <select id="drop-down" class="select" data-mdb-filter="true">
+            {% for dish in dishes %}
+            <option value="{{dish.dish_name}}">{{ dish.dish_name.capitalize() }}</option>
+            {% endfor %}
+          </select>
+        </div>
+  
+  
+        <div class="col">
+          <h5>Satisfy your cravings at:</h5>
+          <div id="best_restaurant"></div>
+  
+        </div>
+      </div>
  
-      <div class="col-5">
-        <h4>Find the best</h4>
-        <select id="drop-down" class="select" data-mdb-filter="true">
-          {% for dish in dishes %}
-          <option value="{{dish.dish_name}}">{{ dish.dish_name.capitalize() }}</option>
-          {% endfor %}
-        </select>
-
-      </div>
-      
-      <div id="best_restaurant" class="col-7">
-
-      </div>
-
-
-
 
 
     
     </div>
 
-    <div class="row">
-      <div class="col-6">
+  <div class="row">
+    <div class="col-6">
         
       
-        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-        <h4>Create an Account</h>
-        </div>
-        <form action="/users" method="POST">
-          <p>
-            Email <input type="text" name="email">
-          </p>
-    
-          <p>
-            Password <input type="password" name="password">
-          </p>
-    
-          <p>
-            <input type="submit">
-          </p>
-        </form>
+      <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+      <h4>Create an Account</h>
       </div>
+      <form action="/users" method="POST">
+        <p>
+          Username <input type="text" name="username">
+        </p>
 
-      <div class="col-6">
-        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-          <h4>Log In</h>
-        </div>
-        <form action="/login" method="POST">
-          <p>
-            Email <input type="text" name="email">
-          </p>
+        <p>
+          Email <input type="text" name="email">
+        </p>
     
-          <p>
-            Password <input type="password" name="password">
-          </p>
+        <p>
+          Password <input type="password" name="password">
+        </p>
     
-          <p>
-            <input type="submit">
-          </p>
-        </form>
-      </div>
+        <p>
+          <input type="submit">
+        </p>
+      </form>
     </div>
+
+    <div class="col-6">
+      <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+        <h4>Log In</h>
+      </div>
+      <form action="/login" method="POST">
+        <p>
+          Email <input type="text" name="email">
+        </p>
+    
+        <p>
+          Password <input type="password" name="password">
+        </p>
+    
+        <p>
+          <input type="submit">
+        </p>
+      </form>
+    </div>
+  </div>
   
-    <script src="static/script.js"></script>
+  <script src="static/script.js"></script>
     
 
 {% endblock %}

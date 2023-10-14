@@ -2,7 +2,7 @@
 
 import os
 import json
-from random import sample, randint
+from random import sample, randint, choice
 from datetime import datetime
 
 import crud
@@ -58,18 +58,20 @@ model.db.session.commit()
 #model.db.session.add_all(menuitems_in_db)
 #model.db.session.commit()
 # 
-# Create 15 users; each user will make 10 ratings
-for n in range(15):
+# Create 50 users; each user will make 10 ratings
+for n in range(50):
     email = f"user{n+1}@test.com"  # Voila! A unique email!
     password = "test"
+    adjective = choice(["Hangry","Happy"])
+    username = f"{adjective}Eater{n+1}"
 
-    user = crud.create_user(email, password)
+    user = crud.create_user(email, password, username)
     model.db.session.add(user)
 
     model.db.session.commit()
 
 
-    random_restaurant_item = sample(restaurantitems_in_db, 10)
+    random_restaurant_item = sample(restaurantitems_in_db, 15)
 
     for item in random_restaurant_item:
         vote = crud.create_vote(user.id, item.id)

@@ -13,6 +13,7 @@ class User(db.Model):
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String, unique=True)
     password = db.Column(db.String)
+    username = db.Column(db.String)
     #zipcode = db.Column(db.Integer)
 
     votes = db.relationship("Vote", back_populates="user")
