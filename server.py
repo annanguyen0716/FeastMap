@@ -63,9 +63,11 @@ def restaurant_positions():
     for restaurant in restaurants:
         positions.append({
             "name": restaurant.name,
+            "address": restaurant.address,
+            "hours": restaurant.hours,
             "position": {
                 "lat": restaurant.latitude,
-                "lng": restaurant.longtitude
+                "lng": restaurant.longtitude,
             }
         })
 

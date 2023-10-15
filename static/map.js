@@ -15,7 +15,7 @@ async function initMap() {
     const positions = await response.json();
     positions.restaurants.forEach(restaurant => {
         const infowindow = new google.maps.InfoWindow({
-            content: "<b>" + restaurant.name + "</b>",
+            content: `<b> ${restaurant.name}<br> Address: ${restaurant.address}<br> Hours: ${restaurant.hours}</b>`,
         });
         const marker = new google.maps.Marker({
             position: restaurant.position,

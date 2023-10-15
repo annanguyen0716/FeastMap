@@ -28,14 +28,15 @@ dishes_in_db = []
 
 
 for restaurant in restaurant_data:
-    name, zipcode, city = (
+    name, address, city, hours = (
         restaurant["name"],
-        restaurant["zipcode"],
-        restaurant["city"]
+        restaurant["address"],
+        restaurant["city"],
+        restaurant["hours"]
     )
     longtitude, latitude = restaurant["location"].split(", ")
 
-    db_restaurant = crud.create_restaurant(name, zipcode, longtitude, latitude)
+    db_restaurant = crud.create_restaurant(name, address, longtitude, latitude, hours)
     model.db.session.add(db_restaurant)
     model.db.session.commit()
 
@@ -64,7 +65,8 @@ for n in range(50):
     email = f"user{n+1}@test.com"  # Voila! A unique email!
     password = "test"
     adjective = choice(["Hangry","Happy"])
-    username = f"{adjective}Eater{n+1}"
+    noun = choice(["Diner","Foodie"])
+    username = f"{adjective}{noun}{n+1}"
 
     user = crud.create_user(email, password, username)
     model.db.session.add(user)

@@ -1,69 +1,93 @@
 [
   { "name": "Thien Long",
-    "zipcode": 95121,
+    "address": "3005 Silver Creek Rd STE 138, San Jose, CA 95121",
     "city": "San Jose",
     "menu": "fried flour cake (bot chien), grilled fish (cha ca la vong), grilled pork chop with rice, spicy beef noodle, egg rolls",
-    "location": "37.3085591765179, -121.81384291577805"
+    "location": "37.3085591765179, -121.81384291577805",
+    "hours": "10:30AM-9PM"
   },
   { "name": "Bun Bo Hue An Nam",
-    "zipcode": 95122,
+    "address": "740 Story Rd #3, San Jose, CA 95122",
     "city": "San Jose",
     "menu": "spicy beef noodle, vietnamese beef noodle, vietnamese chicken noodle",
-    "location": "37.329048165214644, -121.8583640041315"
+    "location": "37.329048165214644, -121.8583640041315",
+    "hours": "9AM-9PM"
   },
   { "name": "Hue restaurant",
-    "zipcode": 95124,
+    "address": "3005 Silver Creek Rd STE 190, San Jose, CA 95121",
     "city": "San Jose",
     "menu": "spicy beef noodle, rice cakes, grilled pork chop with rice, egg rolls, vietnamese beef noodle",
-    "location": "37.30977017363129, -121.81366641762571"
+    "location": "37.30977017363129, -121.81366641762571",
+    "hours": "10:00AM-8.30PM"
   },
   { "name": "Dat Thanh",
-    "zipcode": 95122,
+    "address": "1055 Tully Rd, San Jose, CA 95122",
     "city": "San Jose",
     "menu": "grilled pork chop with rice, egg rolls, nem nuong",
-    "location": "37.31459526073823, -121.83814435625935"
+    "location": "37.31459526073823, -121.83814435625935",
+    "hours": "10:00AM-8.00PM"
   },
   { "name": "Pho Ha Noi",
-    "zipcode": 95122,
+    "address": "969 Story Rd #6048, San Jose, CA 95122",
     "city": "San Jose",
     "menu": "grilled pork chop with rice, egg rolls, nem nuong, vietnamese beef noodle, spicy beef noodle",
-    "location": "37.332716172986444, -121.85845094830843"
+    "location": "37.332716172986444, -121.85845094830843",
+    "hours": "10:00AM-9.30PM"
   },
   { "name": "Dong Que",
-  "zipcode": 95122,
+  "address": "2852 Alum Rock Ave, San Jose, CA 95127",
   "city": "San Jose",
   "menu": "grilled pork chop with rice, egg rolls, sweet and sour fish hot pot, grilled snails",
-  "location": "37.363452054874394, -121.83240216180137"
+  "location": "37.363452054874394, -121.83240216180137",
+  "hours": "11:00AM-11:00PM"
 },
 { "name": "KV Noodle",
-  "zipcode": 95116,
+  "address": "1162 E William Ct, San Jose, CA 95116",
   "city": "San Jose",
   "menu": "grilled pork chop with rice, egg rolls, egg noodle, vietnamese beef noodle",
-  "location": "37.341560289202576, -121.8616893292712"
+  "location": "37.341560289202576, -121.8616893292712",
+  "hours": "12:00PM-11:00PM"
 },
-{ "name": "Com Tam Thien Huong",
-  "zipcode": 95121,
+{ "name": "Com Tam Thien Huong San Jose",
+  "address": "909 Story Rd Unit 100, San Jose, CA 95122",
   "city": "San Jose",
   "menu": "grilled pork chop with rice, egg rolls, egg noodle, spicy beef noodle",
-  "location": "37.33055504460603, -121.85758368879002"
+  "location": "37.33055504460603, -121.85758368879002",
+  "hours": "10:00AM-7:45PM"
 },
 { "name": "Banh Cuon Ong Ta",
-  "zipcode": 95122,
+  "address": "999 Story Rd UNIT 9030, San Jose, CA 95122",
   "city": "San Jose",
   "menu": "rice rolls, egg rolls",
-  "location": "37.33201292792895, -121.85697790228357"
+  "location": "37.33201292792895, -121.85697790228357",
+  "hours": "10:00AM-7:00PM"
 },
 { "name": "Banh Cuon Thien Huong",
-  "zipcode": 95122,
+  "address": "1818 Tully Rd # 128, San Jose, CA 95122",
   "city": "San Jose",
   "menu": "rice rolls, egg rolls",
-  "location": "37.32223437087, -121.82225227744496"
+  "location": "37.32223437087, -121.82225227744496",
+  "hours": "8:00AM-6:00PM"
 },
-{ "name": "Daeho Kalbi Jjim & Beef Soup",
-  "zipcode": 95035,
+{ "name": "Daeho Kalbi Jjim & Beef Soup Milpitas",
+  "address": "217 W Calaveras Blvd, Milpitas, CA 95035",
   "city": "Milpitas",
   "menu": "kalbijjim, kalbitang",
-  "location": "37.438331079269425, -121.91186766148068"
+  "location": "37.438331079269425, -121.91186766148068",
+  "hours": "10:00AM-9:00PM"
+},
+{ "name": "Stan's Donut Shop",
+  "address": "2628 Homestead Rd, Santa Clara, CA 95051",
+  "city": "Santa Clara",
+  "menu": "glazed donuts, custard donuts",
+  "location": "37.339048063113474, -121.9728772446128",
+  "hours": "6:00AM-2:00PM"
+},
+{ "name": "Krispy Kreme Santa Clara",
+  "address": "3133 Mission College Blvd, Santa Clara, CA 95054",
+  "city": "Santa Clara",
+  "menu": "glazed donuts, custard donuts",
+  "location": "37.38873395857335, -121.98398307529466",
+  "hours": "6:00AM-10:00PM"
 }
-
 ]

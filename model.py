@@ -28,10 +28,11 @@ class Restaurant(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String)
-    zipcode = db.Column(db.Integer)
+    address = db.Column(db.String)
     city = db.Column(db.String)
     longtitude = db.Column(db.Float)
     latitude = db.Column(db.Float)
+    hours = db.Column(db.String)
 
     #restaurants = db.relationship("Zipcode", back_populates="restaurants")
     restaurantitems = db.relationship("RestaurantItem", back_populates="restaurant")
