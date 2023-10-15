@@ -5,14 +5,14 @@
 {% block body %}
 <div class="container">
     <div class="span">
-        <div class="p-3 mb-2 bg-primary text-white">
+        <div class="p-3 mb-2 bg-success text-white text-opacity-75 mb-md-0">
           <h3>{{ user.username }}</h3>
         </div>
     </div>
 
-    <ul>
+    <ul class="list-group">
     {% for vote in votes_details %}
-        <li>
+        <li class="list-group-item">
             {{ vote[0]}}:
             <span>
                 {{ vote[1] }}

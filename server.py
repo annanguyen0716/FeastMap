@@ -12,6 +12,13 @@ app.jinja_env.undefined = StrictUndefined
 
 
 @app.route("/")
+def login():
+    """View homepage."""
+    dishes = crud.get_dishes()
+
+    return render_template("log_in.html")
+
+@app.route("/homepage")
 def homepage():
     """View homepage."""
     dishes = crud.get_dishes()
@@ -108,7 +115,7 @@ def register_user():
         db.session.commit()
         flash("Account created! Please log in.")
 
-    return redirect("/")
+    return redirect("/homepage.html")
 
 
 @app.route("/users/<user_id>")
@@ -141,7 +148,7 @@ def process_login():
         session["user_email"] = user.email
         flash(f"Welcome back, {user.email}!")
 
-    return redirect("/")
+    return redirect("/homepage")
 
 #@app.route("/update_rating", methods=["POST"])
 #def update_rating():

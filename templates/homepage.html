@@ -3,61 +3,63 @@
 
 {% block body %}
 
-
-  <div class="container">
-    <div class="span">
-      <div class="p-3 mb-2 bg-success text-white">
+<main role="main">
+  <div class="jumbotron">
+    <div class="container">
+      <!--<div class="display-3 mb-2 bg-success text-white">-->
+      <div class="p-3 mb-2 bg-success text-white text-opacity-75 mb-md-0">
       
         <h1>FoodReferral</h1>
         <h2>Crowd-sourced recommendations by foodies at your fingertip!</h1>
-
-
+  
       </div>
 
+      <div class="row">
+        <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+          <h1>      </h1>
+        </div>
+  
+      </div>
+
+      <div class="row">
+        <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+          <h1>      </h1>
+        </div>
+  
+      </div>
+
+              <!--<div class="display-3 mb-2 bg-success text-white">-->
 
 
     </div>
+  
+  </div>
+
+  <div class="container">
 
     <div class="row">
-      <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-        <h3>Vote for a specific dish at a restaurant OR Find a recommendation</h3>
-      </div>
-
-    </div>
-
-    <!--<div class="row">
-      <div class="col">
-        <ul>
-          <li><a href="/restaurants">Find restaurants and vote</a></li>
-          <li><a href="/dishes">All dishes </a></li>
-          <li><a href="/users">View all fellow foodies</a></li>
-        </ul>
-      </div>
-    </div>-->
-
-    <div class="row">
-      <div class="col-sm-4 mb-3 mb-sm-0">
+      <div class="col-md-4 mb-3 mb-sm-0">
         <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Restaurants</h5>
-            <p class="card-text">Visit our list of all restaurants, see what's on the menu and vote</p>
+            <h2 class="card-title">Restaurants</h2>
+            <p class="card-text">Visit our list of all restaurants and choose one to recommend</p>
             <a href="/restaurants" class="btn btn-primary text-bg-primary">Find a restaurant</a>
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Dishes</h5>
+            <h2 class="card-title">Dishes</h2>
             <p class="card-text">Visit our list of voted dishes and find your recommendation</p>
             <a href="/dishes" class="btn btn-primary">Find a dish</a>
           </div>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-md-4">
         <div class="card text-white mb-3 bg-success" style="max-width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">Users</h5>
+            <h2 class="card-title">Users</h2>
             <p class="card-text">Find other food gurus and see what they voted for</p>
             <a href="/users" class="btn btn-primary">Find a foodie</a>
           </div>
@@ -66,81 +68,78 @@
     </div>
 
 
-    <div class="span">
 
-      <h3>Quick Search</h3>
+</main>
+
+<div class="row">
+  <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+    <h1>      </h1>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+    <h1>      </h1>
+  </div>
+
+</div>
+
+  <div class="jumbotron">
+    <div class="container">
+      <div class="p-3 mb-2 bg-success text-white text-opacity-75 mb-md-0">
+        <h3>Quick Search</h3>
+      </div>
 
       <div class="row">
-        <div class="col">
-          <h4>Choose from drop down to see recommended restaurant</h4>
-          <select id="drop-down" class="select" data-mdb-filter="true">
-            {% for dish in dishes %}
-            <option value="{{dish.dish_name}}">{{ dish.dish_name.capitalize() }}</option>
-            {% endfor %}
-          </select>
+        <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+          <h1>      </h1>
+        </div>
+      
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 mb-3 mb-sm-0">
+          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">Choose a dish from dropdown</h3>
+              <select id="drop-down" class="select" data-mdb-filter="true">
+                {% for dish in dishes %}
+                <option value="{{dish.dish_name}}">{{ dish.dish_name.capitalize() }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
         </div>
   
-  
-        <div class="col">
-          <h5>Satisfy your cravings at:</h5>
-          <div id="best_restaurant"></div>
-  
+        <div class="col-md-4 mb-3 mb-sm-0">
+          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 18rem;">
+            <div class="card-body">
+              <h3 class="card-title">You can find the best in town at</h3>
+              <p class="card-text" id="best_restaurant" placeholder="Choose from dropdown for recommendation"></p>
+            </div>
+          </div>
         </div>
       </div>
+      
+  
+  
+
+  
  
 
 
     
     </div>
 
-  <div class="position-absolute bottom-0 end-10">
-    <div class="row">
-      <div class="col-7">
-        
-        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-        <h4>Create an Account</h>
-        </div>
-        <form action="/users" method="POST">
-          <p>
-            Username <input type="text" name="username">
-          </p>
   
-          <p>
-            Email <input type="text" name="email">
-          </p>
-      
-          <p>
-            Password <input type="password" name="password">
-          </p>
-      
-          <p>
-            <input type="submit">
-          </p>
-        </form>
-      </div>
-      <div class="col-5">
-        <div class="p-3 mb-2 bg-secondary.bg-gradient text-emphasis-info">
-          <h4>Log In</h>
-        </div>
-        <form action="/login" method="POST">
-          <p>
-            Email <input type="text" name="email">
-          </p>
-      
-          <p>
-            Password <input type="password" name="password">
-          </p>
-      
-          <p>
-            <input type="submit">
-          </p>
-        </form>
-      </div>
-    </div>
     
 
     
+  
   </div>
+
+    
 
 <script src="static/script.js"/>    
 
