@@ -10,9 +10,10 @@
         </div>
     </div>
 
-    <ul class="list-group">
     {% for vote in votes_details %}
-        <li class="list-group-item">
+
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-success text-success">
             {{ vote[0]}}:
             <span>
                 {{ vote[1] }}

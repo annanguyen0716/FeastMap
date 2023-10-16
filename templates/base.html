@@ -49,19 +49,24 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
-            <a class="nav-link" href="/restaurants">Restaurants</a>
-            <a class="nav-link" href="/dishes">Dishes</a>
-            <a class="nav-link" href="/users">Users</a>
-          </div>
+        <div class="navbar-nav collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="d-flex flex-grow-1">
+              <a class="nav-link active" aria-current="page" href="/homepage">Home</a>
+              <a class="nav-link" href="/restaurants">Restaurants</a>
+              <a class="nav-link" href="/dishes">Dishes</a>
+              <a class="nav-link" href="/users">Users</a>
+            </div>
+            <div class="me-auto">
+              <a class="nav-link" href="/">Log Out</a>
+            </div>
+
         </div>
       </div>
     </nav>
 
 
-      <div class="bg-image" position= "sticky" style="background-image: url('/static/img/background3.jpg'); height: 100vh; --bs-bg-opacity: .5;">
+      <div style="margin-top:50px">
+        <img class="bg-image" src="{{ url_for('static', filename='img/background3.jpg') }}" />
         {% block body %}
   
         {% endblock %}

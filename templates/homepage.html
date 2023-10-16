@@ -99,11 +99,13 @@
       </div>
 
       <div class="row">
-        <div class="col-md-8 mb-3 mb-sm-0">
-          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 18rem;">
+        <div class="col-md-7 mb-3 mb-sm-0">
+          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 35rem;">
             <div class="card-body">
-              <h3 class="card-title">Choose a dish from dropdown</h3>
-              <select id="drop-down" class="select" data-mdb-filter="true">
+              <h4 class="card-title">Select from dropdown to see restaurant with highest votes for a dish</h4>
+        
+              <select id="drop-down" class="form-select" data-mdb-filter="true">
+                <option value="" disabled selected hidden>Choose a dish</option>
                 {% for dish in dishes %}
                 <option value="{{dish.dish_name}}">{{ dish.dish_name.capitalize() }}</option>
                 {% endfor %}
@@ -112,11 +114,19 @@
           </div>
         </div>
   
-        <div class="col-md-4 mb-3 mb-sm-0">
-          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 18rem;">
+        <div class="col-md-5 mb-3 mb-sm-0">
+          <div class="card text-primary-emphasis mb-3 bg-light text-opacity-100 mb-md-0" style="max-width: 30rem;">
             <div class="card-body">
-              <h3 class="card-title">You can find the best in town at</h3>
-              <p class="card-text" id="best_restaurant" placeholder="Choose from dropdown for recommendation"></p>
+              <h4 class="card-title">You can find the best in town at</h4>
+              <div class="row">
+                <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+                  <h1>      </h1>
+                </div>
+              
+              </div>
+              <p class="card-text text-success h4" id="best_restaurant" data-placeholder="Recommended restaurant"></p>
+        
+              
             </div>
           </div>
         </div>

@@ -22,11 +22,11 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-4">
+      <div class="col-6">
         <div class="text">
           <ul class="list-group">
             {% for restaurant in restaurants %}
-              <li class="list-group-item">
+              <li class="list-group-item list-group-item-success text-success">
                 <a href="/restaurants/{{ restaurant[1].id }}">
                   {{ restaurant[1].name }} has {{restaurant[0]}} votes for {{dish_name}}
                 </a>
@@ -36,9 +36,9 @@
         </div>
       </div>
 
-      <div class="col-8">
+      <div class="col-6">
         <div class="image">
-          <img src="/static/img/{{dish_name}}.jpeg" alt="{{dish_name}}" style="width: 58vh; height: 55vh;">
+          <img src="/static/img/{{dish_name}}.jpeg" alt="{{dish_name}}" style="width: 60vh; height: 47vh;">
         </div>
       </div>
 

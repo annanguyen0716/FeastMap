@@ -26,8 +26,8 @@
         <div class="col-4">
           <ul class="list-group">
             {% for restaurant in restaurants %}
-              <li class="list-group-item">
-                <a href="/restaurants/{{ restaurant.id }}">
+              <li class="list-group-item list-group-item-success text-success">
+                <a class="card-title" href="/restaurants/{{ restaurant.id }}">
                   {{ restaurant.name }}
                 </a>
               </li>

@@ -57,4 +57,13 @@ $theme-colors-text: (
   width: 88vh;
 }
 
+.bg-image {
+  opacity: 0.5;
+  z-index:-5;
+  position: fixed;
+}
+
+p:empty:not(:focus)::before {
+  content: attr(data-placeholder);
+}
 @import "../node_modules/bootstrap/scss/bootstrap";

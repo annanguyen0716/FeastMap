@@ -7,33 +7,90 @@
   <div class="p-3 mb-2 bg-success text-white text-opacity-75 mb-md-0">
     <div >
       <h1>{{ restaurant.name }}</h1>
-
-      <div>
-        {% if session.get('user_email') %}
-      
-        <h2>Recommend this restaurant</h2>
-        
-        <form action="/restaurants/{{ restaurant.id }}/votes" method="POST" id="myForm">
-          <p>
-            Vote for:
-            <select name="vote" id="vote-select">
-              <option value="">Select menu item</option>
-              {% for item in items_to_vote %}
-                <option value="{{ item }}">{{ item }}</option>
-              {% endfor %}
-            </select>
-          </p>
-          <p><input type="submit"></p>
-        </form>
-      
-      
-      
-        {% endif %}
-      
     </div>
+
+    <h4>Address: {{ restaurant.address }}</h4>
+    <h4>Opening Hours: {{ restaurant.hours}}</h4>
+
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+    <h1>      </h1>
+  </div>
+  
+</div>
+
+<div class="jumbotron">
+  <div class="container">
+
+
+    <div class="row">
+      <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+        <h1>      </h1>
+      </div>
     
     </div>
+
+    <div class="row">
+
+      <div class="col-md-12 mb-3 mb-sm-0">
+        <div class="card text-white mb-3 bg-success text-opacity-100 mb-md-0" style="max-width: 82rem;">
+          <div class="card-body">
+            <h3>Don't keep the secret to yourself! Vote for a menu item at {{ restaurant.name }}</h3>
+          </div>
+        </div>
+      </div>
   </div>
+</div>
+
+
+<div class="row">
+  <div class="p-2 mb-2 bg-secondary.bg-gradient text-emphasis-info">
+    <h1>      </h1>
+  </div>
+
+</div>
+
+<div class="container">
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for dish in items_to_vote %}
+    <div class="col">
+      <div class="card">
+        <img src="/static/img/{{ dish.item.capitalize() }}.jpeg" class="card-img-top" alt="..." style="height: 300px; width:416.01px">
+        <div class="card-body">
+          <div class="row""">
+            <div class="col-md-9 mb-3 mb-sm-0">
+              <a class="card-title text-success" href="/dishes/{{ dish.item }}">{{ dish.item.capitalize() }}</a>
+            </div>
+
+            <div class="col-md-3 mb-3 mb-sm-0">
+              <form action="/restaurants/{{ restaurant.id }}/votes" method="POST">
+                <button type="submit"  class="btn btn-success" name="vote" value="{{ dish }}">Vote</button>
+              </form>
+            </div>
+
+          </div>
+          
+          
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+
+
+  
+
+      
+
 
   
 <!-- The modal -->
@@ -58,24 +115,29 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("form");
-      const selectElement = document.getElementById("vote-select");
+      const forms = document.querySelectorAll("form");
+      console.log(forms);;
       const modalBody = document.getElementById("modalBody");
   
-      form.addEventListener("submit", function (event) {
-        event.preventDefault(); // Prevent the form from submitting normally
-  
-        // Get the selected value from the <select> element
-        const selectedValue = selectElement.value;
-        var n = selectedValue.lastIndexOf('-');
-        var res = selectedValue.substring(n+1);
-        //console.log(selectElement);
-        modalBody.innerHTML = "You've voted for " + res + " at this restaurant";
-  
-        // Show the modal
-        console.log(document.getElementById("myModal"));
-        var modal = new bootstrap.Modal(document.getElementById("myModal"));
-        modal.show();
+      forms.forEach(form => {
+        form.addEventListener("submit", function (event) {
+          const button = form.getElementsByTagName("button")[0];
+          event.preventDefault(); // Prevent the form from submitting normally
+    
+          // Get the selected value from the <select> element
+          console.log(button);
+          const selectedValue = button.value;
+          console.log(selectedValue);
+          var n = selectedValue.lastIndexOf('-');
+          var res = selectedValue.substring(n+1);
+          //console.log(selectElement);
+          modalBody.innerHTML = "You've voted for " + res + " at this restaurant";
+    
+          // Show the modal
+          console.log(document.getElementById("myModal"));
+          var modal = new bootstrap.Modal(document.getElementById("myModal"));
+          modal.show();
+        });
       });
     });
 
